@@ -1,6 +1,6 @@
 /**
  * @file maze.c
- * @author (YOUR NAME)
+ * @author SunFanding
  * @brief Code for the maze game for COMP1921 Assignment 2
  * NOTE - You can remove or edit this file however you like - this is just a provided skeleton code
  * which may be useful to anyone who did not complete assignment 1.
@@ -172,7 +172,7 @@ int read_maze(maze *this, FILE *file) {
         if (len > 0 && buffer[len - 1] == '\n') {
             buffer[len - 1] = '\0';
         }
-        if (strlen(buffer) != this->width) {
+        if (strlen(buffer) != (size_t)this->width) {  // 修改这里
             fprintf(stderr, "Error: Inconsistent row length in maze file.\n");
             return 1;
         }
@@ -292,7 +292,7 @@ int has_won(const maze *this, const coord *player) {
     return (player->x == this->end.x && player->y == this->end.y);
 }
 
-int main() {
+int main(int argc, char *argv[]) {  // 修改这里
     // Check args
     if (argc != 2) {
         fprintf(stderr, "Usage: ./maze <mazefile>\n");
